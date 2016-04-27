@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Facebook Auth Example</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="pull-right">
+  <% if current_user %>
+    Signed in as <strong><%= current_user.name %></strong>!
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <% else %>
+    <%= link_to "/auth/facebook", id: "sign_in" do %>
+    	<img src="<%= asset_path('facebook.png')%>" height="42" width="42"/>
+    <% end %>
+    <%= link_to "/auth/instagram", id: "sign_in" do %>
+    	<img src="<%= asset_path('instagram.jpg')%>" height="42" width="42"/>
+    <% end %>
+    <%= link_to "/auth/twitter", id: "sign_in" do %>
+    	<img src="<%= asset_path('twitter.jpg')%>" height="42" width="42"/>
+    <% end %>
+  <% end %>
+</div>
+<%= yield %>
+
+</body>
+</html>
